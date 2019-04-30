@@ -37,7 +37,7 @@ public class MyHeap {
     }
   }
 
-  //Turns an array into a heap by working backwards through the nodes and pushing them down
+  //Turns an array into a valid heap by working backwards through the nodes and pushing them down
   public static void heapify(int[] data) {
     for (int i = data.length - 1; i >= 0; i--) {
       pushDown(data, data.length, i);
