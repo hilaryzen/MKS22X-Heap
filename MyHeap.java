@@ -25,24 +25,15 @@ public class MyHeap {
   }
 
   public static void pushUp(int[] data, int index) {
+    //If index has a parent smaller than it
     while ((index - 1) / 2 > 0 && (data[(index - 1) / 2] < data[index])) {
-      if (data[(index + 1) * 2 - 1] > data[(index + 1) * 2]) { //Left node is larger
-        int value = data[index];
-        int newI = (index + 1) * 2 - 1;
-        //Swaps the two nodes
-        data[index] = data[newI];
-        data[newI] = value;
-        //Index changes to new position
-        index = newI;
-      } else { //Right node is larger
-        int value = data[index];
-        int newI = (index + 1) * 2;
-        //Swaps the two nodes
-        data[index] = data[newI];
-        data[newI] = value;
-        //Index changes to new position
-        index = newI;
-      }
+      int value = data[index];
+      int newI = (index - 1) / 2;
+      //Swaps the two nodes
+      data[index] = data[newI];
+      data[newI] = value;
+      //Index changes to new position
+      index = newI;
     }
   }
 }
