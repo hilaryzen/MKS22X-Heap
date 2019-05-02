@@ -15,6 +15,8 @@ public class MyHeap {
           data[newI] = value;
           //Index changes to new position
           index = newI;
+        } else { //If child is smaller, break the loop
+          index = size + 1;
         }
       } else {
         int rightNode = (index + 1) * 2;
@@ -34,6 +36,8 @@ public class MyHeap {
           data[newI] = value;
           //Index changes to new position
           index = newI;
+        } else { //If neither node is larger, break the loop
+          index = size + 1;
         }
       }
     }
@@ -70,7 +74,7 @@ public class MyHeap {
       int biggest = data[0];
       data[0] = data[data.length - i];
       data[data.length - i] = biggest;
-      System.out.println("i: " + i);
+      //System.out.println("i: " + i);
     }
   }
 }
