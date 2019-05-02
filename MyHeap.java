@@ -57,6 +57,8 @@ public class MyHeap {
   }
 
   public static void heapsort(int[] data) {
-    
+    for (int i = 0; i < data.length - 1; i++) {
+      heapify(data);
+    }
   }
 }
