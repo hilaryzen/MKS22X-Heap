@@ -57,8 +57,16 @@ public class MyHeap {
   }
 
   public static void heapsort(int[] data) {
-    for (int i = 0; i < data.length - 1; i++) {
-      heapify(data);
+    //Run heapify as the array gets smaller
+    for (int i = 1; i < data.length; i++) {
+      //Heapify
+      for (int index = data.length - i; index >= 0; index--) {
+        pushDown(data, index + 1, index);
+      }
+      //Swap biggest value in the heap to the end of the array
+      int biggest = data[0];
+      data[0] = data[index];
+      data[index] = biggest;
     }
   }
 }
