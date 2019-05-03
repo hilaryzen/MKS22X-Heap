@@ -2,14 +2,17 @@ public class MyHeap {
   //size is the number of elements in the array
   //pushes element at index downward into the right position
   public static void pushDown(int[] data, int size, int index) {
+    int value;
+    int newI;
+    int rightNode;
     //Checks if index is within bounds and one of its children is larger
     while ((index + 1) * 2 <= size) {
       //If node only has one child
       if ((index + 1) * 2 == size) {
         //If the child is larger, swap the nodes
         if (data[index] < data[(index + 1) * 2 - 1]) {
-          int value = data[index];
-          int newI = (index + 1) * 2 - 1;
+          value = data[index];
+          newI = (index + 1) * 2 - 1;
           //Swaps the two nodes
           data[index] = data[newI];
           data[newI] = value;
@@ -19,18 +22,18 @@ public class MyHeap {
           index = size + 1;
         }
       } else {
-        int rightNode = (index + 1) * 2;
+        rightNode = (index + 1) * 2;
         if (data[index] < data[rightNode - 1] && data[rightNode - 1] >= data[rightNode]) { //Left node is larger
-          int value = data[index];
-          int newI = rightNode - 1;
+          value = data[index];
+          newI = rightNode - 1;
           //Swaps the two nodes
           data[index] = data[newI];
           data[newI] = value;
           //Index changes to new position
           index = newI;
         } else if (data[index] < data[rightNode] && data[rightNode - 1] < data[rightNode]) { //Right node is larger
-          int value = data[index];
-          int newI = rightNode;
+          value = data[index];
+          newI = rightNode;
           //Swaps the two nodes
           data[index] = data[newI];
           data[newI] = value;
@@ -58,7 +61,7 @@ public class MyHeap {
 
   //Turns an array into a valid heap by working backwards through the nodes and pushing them down
   public static void heapify(int[] data) {
-    for (int i = data.length - 1; i >= 0; i--) {
+    for (int i = (data.length - 2) / 2; i >= 0; i--) {
       pushDown(data, data.length, i);
     }
   }
@@ -67,7 +70,7 @@ public class MyHeap {
     //Run heapify as the array gets smaller
     for (int i = 1; i < data.length; i++) {
       //Heapify
-      for (int index = data.length - i; index >= 0; index--) {
+      for (int index = (data.length - i - 1) / 2; index >= 0; index--) {
         pushDown(data, data.length - i + 1, index);
       }
       //Swap biggest value in the heap to the end of the array
