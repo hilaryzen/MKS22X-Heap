@@ -66,18 +66,18 @@ public class MyHeap {
     }
   }
 
+  //Heapify data, then swap largest value with the last node and push that down
   public static void heapsort(int[] data) {
+    int biggest;
+    heapify(data);
     //Run heapify as the array gets smaller
     for (int i = 1; i < data.length; i++) {
-      //Heapify
-      for (int index = (data.length - i - 1) / 2; index >= 0; index--) {
-        pushDown(data, data.length - i + 1, index);
-      }
       //Swap biggest value in the heap to the end of the array
-      int biggest = data[0];
+      biggest = data[0];
       data[0] = data[data.length - i];
       data[data.length - i] = biggest;
       //System.out.println("i: " + i);
+      pushDown(data, data.length - i, 0);
     }
   }
 }
